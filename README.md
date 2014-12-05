@@ -1,7 +1,7 @@
 AutoClickerHeroes
 =================
 
-** Note. To just download and use the app, download the entire bin/Debug folder and run the executable -- No virsus, I promis! **
+**Note: to just download and use the app, download the entire bin/Debug folder and run the executable -- No virsus, I promise!**
 
 An autoclicker designed to work with the flash game ClickerHeroes
 
