@@ -18,11 +18,12 @@ Now, I have added other things, such as:
 		* I use this to record a macro that saves my game, so I can easily save my game without interrupting the click combo
 	
 Hoykeys/Controls:
-	F6 starts the clicking **where the mouse is at that point**, and any additional "checked" timers (i.e. the checkboxes at the bottom)
-	Shift+F6 starts the clicking WITHOUT locking the mouse, so the click position follows the cursor.
-	F7 stops the clicking
-	F8 plays back the recorded list of alternate points -- this is the macro I use to save my game
+	*F6 starts the clicking **where the mouse is at that point**, and any additional "checked" timers (i.e. the checkboxes at the bottom)
+	*Shift+F6 starts the clicking WITHOUT locking the mouse, so the click position follows the cursor.
+	*F7 stops the clicking
+	*F8 plays back the recorded list of alternate points -- this is the macro I use to save my game
+	
 	(The rest are somewhat obsolete)
-	Shift+F8 executes the "next" click in the recorded macro (it loops around to the beginning)
-	f9 increments the index within the macro list, to skip over recorded points
-	Shift+F9 decrements the index in the macro list
+	*Shift+F8 executes the "next" click in the recorded macro (it loops around to the beginning)
+	*f9 increments the index within the macro list, to skip over recorded points
+	*Shift+F9 decrements the index in the macro list
