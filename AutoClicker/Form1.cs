@@ -77,6 +77,8 @@ namespace AutoClicker
             comboBox1.SelectedIndex = 0;
             numericUpDown1.Value = 1;
             button1.Enabled = false;
+            checkbox_level.Checked = true;
+            checkbox_keyboard.Checked = true;
 
             // Hotkeys
             RegisterHotKey(this.Handle, F6_HOTKEY_ID, 0, (int)Keys.F6);
@@ -93,7 +95,7 @@ namespace AutoClicker
                 System.Xml.Serialization.XmlSerializer reader =
                     new System.Xml.Serialization.XmlSerializer(typeof(List<Point>));
                 var desktopFodler = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                var fullName = Path.Combine(desktopFodler, "List.txt");
+                var fullName = Path.Combine(desktopFodler, "ClickList.txt");
 
                 System.IO.StreamReader file = new System.IO.StreamReader(
                  fullName);
@@ -204,16 +206,16 @@ namespace AutoClicker
                 return;
             }
 
-            //if (_lockMouse)
-            //{
+            if (_lockMouse)
+            {
                 Point p = Cursor.Position;
                 ClickPoint(mousePosition);
                 Cursor.Position = p;
-            //}
-            //else
-            //{
-                //ClickPoint(Cursor.Position);
-            //}
+            }
+            else
+            {
+                ClickPoint(Cursor.Position);
+            }
         }
 
         void ClickPoint(Point p)
@@ -254,11 +256,9 @@ namespace AutoClicker
             }
         }
 
-        // Dlls used to handle input. Are they different?
+        // Dlls used to handle input
         [DllImport("User32.dll", SetLastError = true)]
         public static extern int SendInput(int nInputs, ref INPUT pInputs, int cbSize);
-        //[DllImport("user32.dll")]
-        //public static extern IntPtr SetCapture(IntPtr hWnd);
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
         [DllImport("user32.dll")]
@@ -323,18 +323,17 @@ namespace AutoClicker
             setPos.Enabled = false;
             comboBox1.Enabled = false;
 
-            if (lockMouse)
-            {
-                // The keyboard timer
-                keyTimer.Interval = 1000 * 60 * 30;
-                keyTimer.Start();
-                Keyboard();
+            // The keyboard timer
+            keyTimer.Interval = 1000 * 60 * 30;
+            keyTimer.Start();
+            Keyboard();
 
-                // The level timer
-                levelTimer.Interval = 1000 * 60;
-                levelTimer.Start();
-                levels();
-            }
+            // The level timer
+            levelTimer.Interval = 1000 * 60;
+            levelTimer.Start();
+            levels();
+
+            _lockMouse = lockMouse;
         }
 
         private void setPos_Click(object sender, EventArgs e)
@@ -355,7 +354,7 @@ namespace AutoClicker
                 System.Xml.Serialization.XmlSerializer writer =
                     new System.Xml.Serialization.XmlSerializer(typeof(List<Point>));
                 var desktopFodler = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                var fullName = Path.Combine(desktopFodler, "List.txt");
+                var fullName = Path.Combine(desktopFodler, "ClickList.txt");
 
                 System.IO.StreamWriter file = new System.IO.StreamWriter(
                  fullName);
@@ -419,7 +418,6 @@ namespace AutoClicker
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //ExecuteNextPoint();
             _hero = Cursor.Position;
         }
     }
